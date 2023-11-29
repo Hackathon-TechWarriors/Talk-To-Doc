@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tutorial on Flask: A Web socket example</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function() {
+        socket.emit('SummarizeInput', {data: 'File Data'});
+    });
+ 
+    socket.on('SummarizeResponse', function(res) {
+        var newParagraph = document.createElement("p");
+        newParagraph.textContent = res?.data
+        document.getElementById("summary").appendChild(newParagraph);
+    });
+ 
+ 
+ 
+</script>
+</head>
+</head>
+<body>
+<h1>SUMMARY:</h1>
+<div id="summary"></div>
+<h1>CONVERSATION</h1>
+<form>
+    <label for="textbox">Enter Question:</label>
+    <input type="text" id="textbox">
+    <button type="button" id="readButton">SEND</button>
+</form>
+<div id="conversation"></div>
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+   document.getElementById("readButton").addEventListener("click", function() {
+            var textboxValue = document.getElementById("textbox").value;
+            console.log("textboxValue",textboxValue);
+            socket.emit('ConversationInput', {data: textboxValue});
+        });
+ 
+        socket.on('ConversationResponse', function(res) {
+        var newParagraph = document.createElement("p");
+        newParagraph.textContent = res?.data
+        document.getElementById("conversation").appendChild(newParagraph);
+    });});
+</script>
+</body>
+</html>
