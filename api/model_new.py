@@ -76,10 +76,8 @@ def Summarize_File(Filename,socketio):
     socketio.emit("upload_progress",{"data":"90"})
     i=0
     while i < len(docs):
-        summary.insert(i,stuff_chain.run(docs[i:i+18]))     
-        i=i+18
-    #chain=  RetrievalQA.from_chain_type(llm=OpenAI(engine='TalktoDocModel'), chain_type="stuff", retriever=vectordb.as_retriever())
-    #summary = chain.run("Summarize categories of Olympics legacies")
+        summary.insert(i,stuff_chain.run(docs[i:i+10]))     
+        i=i+10
     socketio.emit("upload_progress",{"data":"100"})
     socketio.emit('SummarizeResponse', {'data':summary})
     return summary
@@ -88,14 +86,7 @@ def Summarize_File(Filename,socketio):
 
      
 def start_conversation(question,socketio,filename,emit):
-        # GREETING_INPUTS = ["hi", "hello", "how are you","good morning"]#Greeting responses back to the user
-        # GREETING_RESPONSES=["Hi,How can I help you"]#Function to return a random greeting response to a users greeting
-        # if question.lower() in GREETING_INPUTS:
-        #     return socketio.emit('ConversationResponse', {'data':random.choice(GREETING_RESPONSES) }) 
-        
-        
         vectordb = vectordbGlobal
-
         template ="""As an AI assistant you provide answers based on the given context, ensuring accuracy and brifness.
         
                 You always follow these guidelines:
@@ -114,23 +105,7 @@ def start_conversation(question,socketio,filename,emit):
             memory_key="chat_history",
             return_messages=True
         )
-        
-        
-        docs_ss = vectordb.similarity_search(question)
-        #print(docs_ss)
-        #vectordb=Chroma.from_documents(docs_ss, embedding=embedding, persist_directory = persist_directory)
-        
-        chain=  RetrievalQA.from_chain_type(llm=OpenAI(engine='TalktoDocModel'), chain_type="stuff", retriever=vectordb.as_retriever()
-                                            #,chain_type_kwargs={"prompt": QA_CHAIN_PROMPT}
-                                            ) # Need to provide correct models
-        
+        chain=  RetrievalQA.from_chain_type(llm=OpenAI(engine='TalktoDocModel'), chain_type="stuff", retriever=vectordb.as_retriever())        
         s=chain.run(question)
-        print(s)
-        g=s.split("\n")[0]
-        print("g",g)
-        result=chain({"query": question})
-        #print(result)
-        test=result['result'].split("Context")[0]
-        test2=test.split("Context")[0]
-        socketio.emit('ConversationResponse', {'data':g})
-        print(test2)
+        answer =s.split("\n")[0]
+        socketio.emit('ConversationResponse', {'data':answer.replace("<|im_end|>","")})
