@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers|Cinzel:400,700,900|Lato:100,300,400,700,900|Lobster|Lora:400,700|Mansalva|Muli:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Oswald:200,300,400,500,600,700|Roboto:100,300,400,500,700,900&display=swap');
+/* Used Google Fonts */
+font-family: 'Roboto', sans-serif;
+font-family: 'Mansalva', cursive;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Lora', serif;
+font-family: 'Muli', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Cinzel', serif;
+font-family: 'Bangers', cursive;
+/* Used Google Fonts */
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  font-size:17px;
+  color:#424242;
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p{
+  margin:0px;
+  padding:0px;
+}
+.logo-container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display:inline-block;
+}
+.logo-container ul li {
+    width: 300px;
+    height: 120px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 10px;
+    float: left;
+    padding:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-container ul li a{
+  text-decoration:none !important;
+  display: inline-block;
+}
+.logo-holder{
+  text-align:center;
+}
+
+.logo-2 h3 {
+    color: #FFFFFF;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    /* text-transform: uppercase; */
+    line-height:1;
+}
+.logo-2 p {
+    font-size: 14px;
+    padding-left: 0px;
+    color: #86bc25;
+    font-weight: 600;  
+    text-transform: uppercase;
+}
+
+
+
+@media only screen and (max-width:736px) {
+  body{
+      margin:0;
+      padding:0;
+  }
+  .logo-container ul {
+      width: 100%;
+      text-align: center;
+  }
+  .logo-container ul li {
+      width: 290px;
+      margin-left: auto;
+      margin-right: auto;
+      float: none !important;
+  }
+  .logo-4 p {
+      margin-top: 2px;
+  }
+  .Logos{
+    margin-top:20px;
+  }
+}
+
+h1.Logos {
+    font-weight: 400;
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0px #2d303a, -2px -2px 0px #2d303a, -2px 2px 0px #2d303a, 2px -2px 0px #2d303a;
+    color: #fff;
+}
+p.para {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 30px;
+    font-family: 'Lora', serif;
+    padding-top: 5px;
+    color: #333333;
+}
+
+.highlight-text
+{
+    color:#86bc25
+}

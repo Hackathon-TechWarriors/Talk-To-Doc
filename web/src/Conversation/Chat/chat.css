@@ -1,0 +1,20 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start; 
+}
+
+li i.pi-check-circle {
+  font-size: 20px;
+  color: #86bc25; 
+  margin-right: 10px;
+}
+
+li{
+  text-align: left;
+}

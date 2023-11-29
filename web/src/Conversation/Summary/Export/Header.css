@@ -1,0 +1,21 @@
+/* YourComponent.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #282c34; 
+    padding: 10px;
+    color: white;
+  }
+  
+  .logo img {
+    width: 50px; 
+    height: auto;
+  }
+  
+  .label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
