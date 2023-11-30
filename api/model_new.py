@@ -12,6 +12,7 @@ from langchain.llms import AzureOpenAI
 import openai
 import os
 import random
+import shutil
 from langchain.chains.llm import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.chains.combine_documents.stuff import StuffDocumentsChain
@@ -41,6 +42,8 @@ persist_directory = 'docs/chroma/'
 vectordbGlobal =  None
 
 def create_vectors(Filename,socketio):
+    if os.path.exists(persist_directory):    
+         shutil.rmtree(persist_directory)
     loader = PyPDFLoader(Filename)
     global vectordbGlobal 
     pages = loader.load()
